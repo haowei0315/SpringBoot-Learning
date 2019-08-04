@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.didispace</groupId>
-	<artifactId>consumer</artifactId>
+	<artifactId>Chapter9-2-1_consumer</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 

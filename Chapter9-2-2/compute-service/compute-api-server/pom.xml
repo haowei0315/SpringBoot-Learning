@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.didispace</groupId>
-	<artifactId>compute-api-server</artifactId>
+	<artifactId>Chapter9-2-2_compute-api-server</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
@@ -20,7 +20,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
+		<java.version>1.7</java.version>
 	</properties>
 
 	<dependencies>
@@ -40,7 +40,7 @@
 		<!-- micro service api -->
 		<dependency>
 			<groupId>com.didispace</groupId>
-			<artifactId>compute-api</artifactId>
+			<artifactId>Chapter9-2-2_compute-api</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 

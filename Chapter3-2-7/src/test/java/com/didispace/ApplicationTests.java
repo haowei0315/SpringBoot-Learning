@@ -21,7 +21,7 @@ public class ApplicationTests {
 	private UserMapper userMapper;
 
 	@Test
-	@Rollback
+	@Rollback(false)
 	public void findByName() throws Exception {
 		userMapper.insert("AAA", 20);
 		User u = userMapper.findByName("AAA");

@@ -23,7 +23,7 @@ public class ApplicationTests {
 	public void test() throws Exception {
 
 		// 创建10条记录
-		userRepository.save(new User("AAA", 10));
+		userRepository.save(new User("AAAA", 10));
 		userRepository.save(new User("BBB", 20));
 		userRepository.save(new User("CCC", 30));
 		userRepository.save(new User("DDD", 40));

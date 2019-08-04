@@ -1,11 +1,13 @@
 package com.didispace.async;
 
+import java.util.Random;
+import java.util.concurrent.Future;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
-
-import java.util.Random;
-import java.util.concurrent.Future;
 
 /**
  * @author 程序猿DD
@@ -16,10 +18,13 @@ import java.util.concurrent.Future;
 @Component
 public class Task {
 
+	private Logger log = LoggerFactory.getLogger(getClass());
+	
     public static Random random =new Random();
 
     @Async
     public Future<String> doTaskOne() throws Exception {
+    	log.info("执行方法1时的参数{},开始了,时间为{},sdfsf。", 111, 23423);
         System.out.println("开始做任务一");
         long start = System.currentTimeMillis();
         Thread.sleep(random.nextInt(10000));

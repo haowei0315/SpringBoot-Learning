@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 /**
  * @author 程序猿DD
@@ -12,6 +14,7 @@ import javax.persistence.Id;
  * @blog http://blog.didispace.com
  */
 @Entity
+//@Table(name = "t_user")
 public class User {
 
     @Id

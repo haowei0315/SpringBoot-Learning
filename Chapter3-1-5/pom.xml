@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.didispace</groupId>
-	<artifactId>SpringBootWithSwagger</artifactId>
+	<artifactId>Chapter3-1-5</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>SpringBootWithSwagger</name>
+	<name>Chapter3-1-5</name>
 	<description>SpringBootWithSwagger</description>
 
 	<parent>

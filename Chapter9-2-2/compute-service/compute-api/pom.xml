@@ -10,7 +10,7 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>compute-api</artifactId>
+	<artifactId>Chapter9-2-2_compute-api</artifactId>
 	<name>compute-api</name>
 	<packaging>jar</packaging>
 

@@ -3,7 +3,9 @@ package com.didispace.web;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import springfox.documentation.annotations.ApiIgnore;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  *
@@ -13,9 +15,10 @@ import springfox.documentation.annotations.ApiIgnore;
  *
  */
 @RestController
+@Api("Hello测试")
 public class HelloController {
 
-    @ApiIgnore
+   //@ApiIgnore
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String index() {
         return "Hello World";

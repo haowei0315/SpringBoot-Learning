@@ -1,24 +1,28 @@
 package com.didispace.aspect;
 
-import com.mongodb.BasicDBObject;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
+import com.mongodb.BasicDBObject;
 
 /**
- * Web层日志切面
+ * Web层日志切面,修改
  *
  * @author 程序猿DD
  * @version 1.0.0
@@ -35,7 +39,7 @@ public class WebLogAspect {
     @Pointcut("execution(public * com.didispace.web..*.*(..))")
     public void webLog(){}
 
-    @Before("webLog()")
+    /*@Before("webLog()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
         // 获取HttpServletRequest
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
@@ -43,10 +47,30 @@ public class WebLogAspect {
         // 获取要记录的日志内容
         BasicDBObject logInfo = getBasicDBObject(request, joinPoint);
         logger.info(logInfo);
+    }*/
+
+    
+    @Around("webLog()")
+    public Object around(ProceedingJoinPoint joinPoint) throws Throwable{
+/*    	System.out.println("已经记录下操作日志@Around 方法执行前");
+        Object proceed = pjp.proceed();
+        System.err.println(proceed);
+        System.out.println("已经记录下操作日志@Around 方法执行后");
+        return proceed;*/
+        
+        // 获取HttpServletRequest
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+        Object result = joinPoint.proceed();
+        // 获取要记录的日志内容
+        BasicDBObject logInfo = getBasicDBObject(request, joinPoint, result);
+        logger.info(logInfo);
+        return result;
+        
     }
 
 
-    private BasicDBObject getBasicDBObject(HttpServletRequest request, JoinPoint joinPoint) {
+    private BasicDBObject getBasicDBObject(HttpServletRequest request, JoinPoint joinPoint, Object result) {
         // 基本信息
         BasicDBObject r = new BasicDBObject();
         r.append("requestURL", request.getRequestURL().toString());
@@ -62,6 +86,9 @@ public class WebLogAspect {
         r.append("parameters", request.getParameterMap());
         r.append("classMethod", joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
         r.append("args", Arrays.toString(joinPoint.getArgs()));
+        r.append("returnResult", result);
+        r.append("date", new Date());
+        
         return r;
     }
 

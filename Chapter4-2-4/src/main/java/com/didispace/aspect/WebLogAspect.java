@@ -1,8 +1,14 @@
 package com.didispace.aspect;
 
+import java.util.Arrays;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -10,9 +16,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 
 /**
  * Web层日志切面
@@ -58,6 +61,14 @@ public class WebLogAspect {
         logger.info("SPEND TIME : " + (System.currentTimeMillis() - startTime.get()));
     }
 
+    @Around("webLog()")
+    public Object around(ProceedingJoinPoint pjp) throws Throwable{
+    	System.out.println("已经记录下操作日志@Around 方法执行前");
+        Object proceed = pjp.proceed();
+        System.err.println(proceed);
+        System.out.println("已经记录下操作日志@Around 方法执行后");
+        return proceed;
+    }
 
 }
 

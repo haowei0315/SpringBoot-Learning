@@ -18,7 +18,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
- * Web层日志切面，保险版本1.0工厅撒大声地
+ * Web层日志切面，保险版本1.0合并
  *
  * @author 程序猿DD
  * @version 1.0.0
